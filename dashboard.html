@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+      margin: 0;
+    }
+    header {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    button.logout {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button.logout:hover {
+      background-color: #990000;
+    }
+    h1 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="logout" onclick="logout()">Kijelentkezés</button>
+  </header>
+  <h1>Üdvözöllek a Dashboardon!</h1>
+  <p>Sikeresen bejelentkeztél.</p>
+
+  <script>
+    function logout() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

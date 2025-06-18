@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bejelentkezés</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004a99;
+    }
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+    }
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Bejelentkezés</h2>
+    <form id="loginForm">
+      <label for="username">Felhasználónév</label>
+      <input type="text" id="username" name="username" required />
+      <label for="password">Jelszó</label>
+      <input type="password" id="password" name="password" required />
+      <button type="submit">Belépés</button>
+    </form>
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    const accounts = {
+      admin: "titkos123",
+      user1: "jelszo1",
+      user2: "jelszo2"
+    };
+
+    const form = document.getElementById('loginForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = form.username.value.trim();
+      const password = form.password.value;
+
+      if(accounts[username] && accounts[username] === password) {
+        message.textContent = 'Sikeres bejelentkezés! Üdv, ' + username + '.';
+        message.className = 'message success';
+
+        // Átirányítás dashboard oldalra 1 másodperc múlva
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1000);
+      } else {
+        message.textContent = 'Hibás felhasználónév vagy jelszó!';
+        message.className = 'message error';
+      }
+    });
+  </script>
+</body>
+</html>
